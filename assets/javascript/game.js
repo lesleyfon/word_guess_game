@@ -9,7 +9,8 @@
 		var availableGuesses = 9;
 		var lettersGuessed = [];
 		var computerChoice;
-		
+		var userGuess = [];
+		var wordsUsed = []
 
 		// letters available to choose
 	var options = [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u","v","w", "x", "y", "x", "z"];
@@ -17,44 +18,72 @@
 
  function computerNum(){ 
 	 computerChoice = options[Math.floor(Math.random()*26)+1];
-	//  console.log(computerChoice)
+	 console.log(computerChoice)
 	 }
-	computerNum()
 
+computerNum();
 	document.onkeyup = function(){
-		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-		// console.log(userGuess);
+			userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+			console.log(userGuess);
 
 	
-		if (computerChoice==userGuess){
+		if (computerChoice === userGuess){
 			// alert("you gain a point");
 			wins++;
-			lettersGuessed = []
-			document.querySelector('#w').textContent = wins;
-			computerNum()
-
+			lettersGuessed = [];
+			document.querySelector('#w').textContent =  wins;
+			computerNum();
+			restartGame();
+			wordsUsed = [];
+			userGuess = [];
 		
 			}
-			else if (computerChoice!==userGuess){
-				// alert("you lost a ppoint");
-				losses++;
+			else {
+				availableGuesses--;
 				// availableGuesses === availableGuesses--
-				document.querySelector('#l').textContent = losses;
-				computerNum()
-		
+				document.querySelector('#gL').textContent = availableGuesses;
+				// availableGuesses === availableGuesses--
+			}
 
+			if(availableGuesses ===0){
+				losses ++
+				document.querySelector('#l').textContent = losses;
+				restartGame();
+				computerNum();
+				wordsUsed = [];
+				userGuess = [];
 			}
-		
-			else if (computerChoice!==userGuess || computerChoice==userGuess) {
-                console.log()
-			availableGuesses--;
-			document.querySelector("#gL").textContent = availableGuesses;
-			computerNum()
+
+			function restartGame(){
+				lettersGuessed=[];
+				availableGuesses = 9;
+				document.querySelector('#gL').textContent = availableGuesses;
+				wordsUsed = [];
+				userGuess = [];
+				
+			}
+
+			wordsUsed = wordsUsed + userGuess + ","
+			document.querySelector('#yG').textContent =  wordsUsed;
+			// else if (computerChoice!==userGuess || computerChoice==userGuess) {
+            //     console.log()
+			// availableGuesses--;
+			// document.querySelector("#gL").textContent = availableGuesses;
+			// computerNum()
 			
-			}
-    
+			// }
+			// if(availableGuesses >= 0){
+			// 	// alert("you lost a ppoint");
+			// 	losses++;
+			// 	document.querySelector('#l').textContent = losses;
+			// 	losses ++
+			// 	document.querySelector('#l').textContent = losses;
+			// }
+			// alert("you lost a ppoint");
+			
+		
 
         }
-    var html = "<p>"
+    // var html = "<p>"
 		
  
