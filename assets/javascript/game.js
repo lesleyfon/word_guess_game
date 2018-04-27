@@ -17,20 +17,17 @@
 
  function computerNum(){ 
 	 computerChoice = options[Math.floor(Math.random()*26)+1];
-	 console.log(computerChoice)
+	//  console.log(computerChoice)
 	 }
-	// console.log(computerChoice)
 	computerNum()
 
 	document.onkeyup = function(){
 		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-		console.log(userGuess);
+		// console.log(userGuess);
 
 	
-			// console.log(computerChoice);
-
-		if (computerChoice===userGuess){
-			alert("you won");
+		if (computerChoice==userGuess){
+			// alert("you gain a point");
 			wins++;
 			lettersGuessed = []
 			document.querySelector('#w').textContent = wins;
@@ -39,7 +36,7 @@
 		
 			}
 			else if (computerChoice!==userGuess){
-				alert("you loss");
+				// alert("you lost a ppoint");
 				losses++;
 				// availableGuesses === availableGuesses--
 				document.querySelector('#l').textContent = losses;
@@ -48,21 +45,16 @@
 
 			}
 		
-			else if (computerChoice!==userGuess || computerChoice===userGuess) {
-				
-			availableGuesses-1;
-			 console.log("availableGuesses")
-			// lettersGuessed = []
+			else if (computerChoice!==userGuess || computerChoice==userGuess) {
+                console.log()
+			availableGuesses--;
 			document.querySelector("#gL").textContent = availableGuesses;
 			computerNum()
 			
 			}
-
-			var html = "<p>Your Guesses: "+ lettersGuessed +"</p>";
-			document.querySelector("#game").innerHTML = html
     
-		
 
-		}
+        }
+    var html = "<p>"
 		
  
